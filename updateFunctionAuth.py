@@ -1,0 +1,27 @@
+import requests
+import json
+import openpyxl
+from request import request
+from do_request import do_request
+import data_base
+
+
+testCase = openpyxl.load_workbook(r"/Users/canyueyinxue/auto_test/testcase/功能权限.xlsx")
+sheet=testCase.get_sheet_by_name(r"功能权限")
+urls=''
+headers=''
+request_parameter=''
+
+for rownum in range(2,sheet.max_row+1):
+    urls=sheet.cell(row=rownum,column=3).value
+    headers=sheet.cell(row=rownum,column=4).value
+    request_method=sheet.cell(row=rownum,column=5).value
+    request_parameter=sheet.cell(row=rownum,column=6).value
+    r=request(urls,request_method,request_parameter,headers=headers)
+    response=do_request(r)
+
+    print(urls)
+    print(headers)
+    print(request_parameter)
+    print(response.status_code)
+    print(response.text)
