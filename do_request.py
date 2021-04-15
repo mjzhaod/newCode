@@ -21,3 +21,9 @@ def do_request(request):
     return response
 
 
+def build_url(url,url_param):
+    if url.find('?') == -1:
+        url=url+'?authoToken='+url_param
+    else:
+        url=url+'&authoToken='+url_param
+    return url
