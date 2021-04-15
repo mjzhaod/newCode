@@ -6,16 +6,18 @@ class Case:
     url = None
     check_expression = None
     params = None
+    body = None
     response_holder = None
     through = None
 
-    def __init__(self, id, description, headers, method, url, check_expression, params):
+    def __init__(self, id, description, headers, method, url, check_expression, body=None, params=None):
         self.id = id
         self.description = description
         self.headers = headers
         self.method = method
         self.url = url
         self.check_expression = check_expression
+        self.body = body
         self.params = params
 
     def get_id(self):
@@ -47,3 +49,12 @@ class Case:
 
     def set_through(self, through):
         self.through = through
+
+    def set_params(self, params):
+        self.params = params
+
+    def get_params(self):
+        return self.params
+
+    def get_body(self):
+        return self.body

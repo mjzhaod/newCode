@@ -11,3 +11,6 @@ class CaseInfoHolder:
 
     def set_cases(self, cases):
         self.cases = cases
+
+    def get_cases(self):
+        return self.cases

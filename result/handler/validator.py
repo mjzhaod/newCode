@@ -1,4 +1,14 @@
-from result.handler.result_validator import Condition
+
+class Condition:
+
+    key = None
+    operator = None
+    value = None
+
+    def __init__(self, key, operator, value):
+        self.key = key
+        self.value = value
+        self.operator = operator
 
 
 class Validator:

@@ -11,3 +11,4 @@ def obtain_actual_validator(expression):
     for candidate in default_validator:
         if candidate.support(expression):
             return candidate
+    raise Exception("不合法结果验证器")

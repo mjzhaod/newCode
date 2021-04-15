@@ -22,7 +22,8 @@ def result_handler(result_set: ResultSet) -> Case:
       """
     return Case(result_set.get_by_name("id"), result_set.get_by_name("description"), result_set.get_by_name("headers"),
                 result_set.get_by_name("method"), result_set.get_by_name("url"),
-                result_set.get_by_name("check_expression"), result_set.get_by_name("params"))
+                result_set.get_by_name("check_expression"), result_set.get_by_name("body"),
+                result_set.get_by_name("params"))
 
 
 def build_query_info(properties):

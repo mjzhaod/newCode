@@ -1,17 +1,6 @@
 from result.handler.validator import Validator
 import json
 
-class Condition:
-
-    key = None
-    operator = None
-    value = None
-
-    def __init__(self, key, operator, value):
-        self.key = key
-        self.value = value
-        self.operator = operator
-
 
 class ResponseValidator(Validator):
     """

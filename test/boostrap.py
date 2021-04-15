@@ -21,8 +21,8 @@ def startup():
     execution_chain = ExecutionChainFactory.instance()
     case_definition = TestCaseDefinition("/Users/hong/Downloads/功能权限.xlsx",
                                          [Property("id", 0), Property("description", 1), Property("url", 2),
-                                          Property("headers", 3), Property("method", 4), Property("params", 5),
-                                          Property("check_expression", 6)])
+                                          Property("headers", 3), Property("method", 4), Property("body", 5),
+                                          Property("params", 6), Property("check_expression", 7)])
     execution_chain.execute(case_definition)
 
 
