@@ -31,8 +31,9 @@ class Validator:
         items = expression.split(" ")
         index = 0
         condition = None
-        while index <= len(items):
-            condition = Condition(items[index], items[++index], items[++index])
+        while index < len(items) -1:
+            condition = Condition(items[index], items[index + 1], items[index + 2])
+            index += 2
         return condition
 
     def support(self, expression: str):
