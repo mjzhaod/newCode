@@ -10,3 +10,4 @@ class Filter:
 
     def set_chain(self, chain = None):
         self.chain = chain
+

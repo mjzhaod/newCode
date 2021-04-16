@@ -18,8 +18,8 @@ class TestExecutionChain:
         if filter is None:
             return
         # 使用self作为传递参数时，莫名会导致miss parameter 错误，这里直接根据类型传入两个参数
-        filter.set_chain(filter, self)
-        return filter.do_filter(filter, case_holder)
+        filter.set_chain(self)
+        return filter.do_filter(case_holder)
 
     def execute(self, case_definition):
         case_holder = CaseInfoHolder(case_definition)

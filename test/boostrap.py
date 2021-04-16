@@ -4,6 +4,7 @@ from request.request_filter import RequestFilter
 from result.result_filter import ResultHandlerFilter
 from case.test_case_definition import TestCaseDefinition
 from case.property_definition import Property
+from report.report_filter import ReportFilter
 
 
 class ExecutionChainFactory:
@@ -11,7 +12,7 @@ class ExecutionChainFactory:
     @staticmethod
     def instance():
         # 定义执行链对象
-        filters = [ExcelReaderFilter, RequestFilter, ResultHandlerFilter]
+        filters = [ExcelReaderFilter(), RequestFilter(), ResultHandlerFilter(), ReportFilter()]
         execution_chain = TestExecutionChain(filters)
         # 添加filter
         return execution_chain
