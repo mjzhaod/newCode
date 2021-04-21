@@ -2,7 +2,7 @@ import requests
 import json
 import openpyxl
 from request import Request
-from do_request import do_request,build_url
+from do_request import do_request,build_url,check
 import data_base
 
 
@@ -14,7 +14,7 @@ def generate_result(row_num, columns):
     return re
 
 
-workbook = openpyxl.load_workbook(r"/Users/hong/Downloads/功能权限.xlsx")
+workbook = openpyxl.load_workbook(data_base.address)
 sheet=workbook.get_sheet_by_name(r"功能权限")
 urls=''
 headers=''
@@ -24,13 +24,15 @@ for rownum in range(2,sheet.max_row+1):
     # 定义excel里的一列 对应request对象里的字段 name表示request里的属性名， index表示excel的列号
     request = generate_result(rownum, [{"name": "url", "index": 3}, {"name": "headers", "index": 4},
                                          {"name": "method", "index": 5},
-                                         {"name": "body", "index": 6}])
-    urls = build_url(request, data_base.token)
-    print(urls)
+                                         {"name": "body", "index": 6}],{"name":"expectResult","index":7})
+    build_url(request, data_base.token)
     response=do_request(request)
+    result=check(request,response)
+    if result:
+        print()
 
-    print(headers)
-    print(request_parameter)
+
+
     print(response.status_code)
     print(response.text)
 

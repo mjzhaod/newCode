@@ -30,13 +30,15 @@ def build_url(request,url_param):
     request.url = url
 
 
-def check(request):
-    result=do_request(request)
-    if result.response_status==200:
-        return result.text
-    elif (result.status_code == 401):
+def check(request,response):
+    if response.response_status == 200:
+        if response.text == request.expectResult:
+            return True
+        else:
+            return False
+    elif response.status_code == 401:
         raise Exception("用户没有登陆")
     else:
-        raise Exception("服务器错误" + str(result.status_code))
+        raise Exception("服务器错误" + str(response.status_code))
 
 
